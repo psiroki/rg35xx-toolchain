@@ -17,7 +17,9 @@ WORKDIR /root/build/
 RUN ./build-sdl.sh \
    && cat ./setup-env.sh >> /etc/bash.bashrc \
    # Clean up
-   && rm -rfd /root/build
-WORKDIR /root/workspace/
+   && rm -rfd /root/build \
+   && mkdir -p /workspace \
+   && chmod 0777 /workspace
+WORKDIR /workspace/
 
 CMD ["/bin/bash"]
